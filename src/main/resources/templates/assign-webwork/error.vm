@@ -1,0 +1,4 @@
+<h2>$action.getText("assign-webwork.assign.templates.error.title")</h2>
+<script type="text/javascript">
+    document.location.reload(true);
+</script>

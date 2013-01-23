@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+  </plugin-info>
+  
+  <resource type="i18n" name="i18n" location="ru.mail.jira.plugins.a1"/>
+  
+  <web-resource key="assign-webwork-resources" name="Assign webwork resources">
+        <transformation extension="js">
+            <transformer key="jsI18n"/>
+        </transformation>
+        <resource type="download" name="assign-dialog.js" location="js/assign-dialog.js"/>
+        <context>atl.general</context>
+  </web-resource>
+    
+  
+  <webwork1 key="assign-webwork" name="AssignWebwork" i18n-name-key="assign-webwork.name" class="java.lang.Object">
+    <description key="assign-webwork.description">The AssignWebwork Plugin</description>
+    <actions>
+      <action name="ru.mail.jira.plugins.webwork.AssignWebworkAction" alias="AssignIssue">
+        <view name="input">/templates/assign-webwork/input.vm</view>
+        <view name="error">/templates/assign-webwork/error.vm</view>
+        <view name="success">/templates/assign-webwork/success.vm</view>
+      </action>      
+    </actions>
+  </webwork1>
+</atlassian-plugin>

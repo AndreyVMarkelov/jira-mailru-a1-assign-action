@@ -1,0 +1,9 @@
+<body>
+    <h2>$action.getText("assign-webwork.assign.templates.success.title")</h2>
+    <script type="text/javascript">
+        document.location.reload(true);
+    </script>
+    <div class="buttons">
+        <a class="cancel" href="#" id="issue-close">$action.getText("assign-webwork.assign.templates.success.button.cancel")</a>
+    </div>
+</body>
