@@ -35,8 +35,11 @@ import com.atlassian.jira.webtests.Permissions;
 import com.atlassian.query.Query;
 
 
+@SuppressWarnings("unchecked")
 public class AssignWebworkAction extends AbstractCommentableAssignableIssue
 {
+    private static final long serialVersionUID = -2431252751604507130L;
+
     private static final Logger log = LoggerFactory
         .getLogger(AssignWebworkAction.class);
 
