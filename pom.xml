@@ -3,13 +3,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.mail.jira.plugins</groupId>
-    <artifactId>a1</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>a1-assign-action</artifactId>
+    <version>1.0</version>
     <organization>
-        <name>Example Company</name>
-        <url>http://www.example.com/</url>
+        <name>Mail.Ru</name>
+        <url>http://www.mail.ru/</url>
     </organization>
-    <name>a1</name>
+    <name>Mail.Ru a1 assign action</name>
     <description>This is the ru.mail.jira.plugins:a1 plugin for Atlassian JIRA.</description>
     <packaging>atlassian-plugin</packaging>
     <dependencies>
@@ -18,46 +18,6 @@
             <artifactId>atlassian-jira</artifactId>
             <version>${jira.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- Add dependency on jira-core if you want access to JIRA implementation classes as well as the sanctioned API. -->
-        <!-- This is not normally recommended, but may be required eg when migrating a plugin originally developed against JIRA 4.x -->
-        <!--
-        <dependency>
-            <groupId>com.atlassian.jira</groupId>
-            <artifactId>jira-core</artifactId>
-            <version>${jira.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.atlassian.jira</groupId>
-            <artifactId>jira-tests</artifactId>
-            <version>${jira.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.atlassian.jira</groupId>
-            <artifactId>jira-func-tests</artifactId>
-            <version>${jira.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.8.5</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.1.1</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
@@ -82,8 +42,8 @@
         </plugins>
     </build>
     <properties>
-        <jira.version>5.1.6</jira.version>
-        <jira.data.version>5.1</jira.data.version>
+        <jira.version>5.0</jira.version>
+        <jira.data.version>5.0</jira.data.version>
         <amps.version>4.0</amps.version>
     </properties>
 </project>
