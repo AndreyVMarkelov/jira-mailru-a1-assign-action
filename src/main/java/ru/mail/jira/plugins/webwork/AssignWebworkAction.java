@@ -10,12 +10,13 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ru.mail.jira.plugins.common.Constants;
+import ru.mail.jira.plugins.common.Consts;
 
 import com.atlassian.crowd.embedded.api.User;
 import com.atlassian.jira.ComponentManager;
 import com.atlassian.jira.bc.issue.comment.CommentService;
 import com.atlassian.jira.bc.issue.search.SearchService;
+import com.atlassian.jira.component.ComponentAccessor;
 import com.atlassian.jira.config.SubTaskManager;
 import com.atlassian.jira.event.type.EventDispatchOption;
 import com.atlassian.jira.issue.CustomFieldManager;
@@ -27,11 +28,11 @@ import com.atlassian.jira.issue.search.SearchException;
 import com.atlassian.jira.issue.search.SearchResults;
 import com.atlassian.jira.project.Project;
 import com.atlassian.jira.security.JiraAuthenticationContext;
+import com.atlassian.jira.security.Permissions;
 import com.atlassian.jira.user.util.UserUtil;
 import com.atlassian.jira.util.SimpleErrorCollection;
 import com.atlassian.jira.web.action.issue.AbstractCommentableAssignableIssue;
 import com.atlassian.jira.web.bean.PagerFilter;
-import com.atlassian.jira.webtests.Permissions;
 import com.atlassian.query.Query;
 
 
@@ -101,10 +102,10 @@ public class AssignWebworkAction extends AbstractCommentableAssignableIssue
         {
             // Validating vacations
             final String jqlQuery = "project = "
-                + Constants.PROJECT_NAME_VACATIONS + " and assignee = "
+                + Consts.PROJECT_NAME_VACATIONS + " and assignee = "
                 + getAssignee() + " and cf["
-                + Constants.CF_VACATION_DATE_FROM_ID + "] <= now() and cf["
-                + Constants.CF_VACATION_DATE_TO_ID + "] >= now()";
+                + Consts.CF_VACATION_DATE_FROM_ID + "] <= now() and cf["
+                + Consts.CF_VACATION_DATE_TO_ID + "] >= now()";
 
             List<Issue> issues = executeJQLQuery(jqlQuery);
 
@@ -114,9 +115,9 @@ public class AssignWebworkAction extends AbstractCommentableAssignableIssue
                     .getInstance().getCustomFieldManager();
 
                 CustomField cfDateFrom = customFieldManager
-                    .getCustomFieldObject(Constants.CF_VACATION_DATE_FROM_ID);
+                    .getCustomFieldObject(Consts.CF_VACATION_DATE_FROM_ID);
                 CustomField cfDateTo = customFieldManager
-                    .getCustomFieldObject(Constants.CF_VACATION_DATE_TO_ID);
+                    .getCustomFieldObject(Consts.CF_VACATION_DATE_TO_ID);
 
                 Issue anIssue = issues.get(0);
                 Date dateFrom = (Date) anIssue.getCustomFieldValue(cfDateFrom);
