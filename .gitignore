@@ -8,7 +8,4 @@ bin/
 test/
 .settings
 
-!pom.xml
 !.gitignore
-!README.MD
-!src/**/*
