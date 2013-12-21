@@ -1,0 +1,60 @@
+$webResourceManager.requireResource("ru.mail.jira.plugins.a1:assign-webwork-resources")
+<h2 class="aui-popup-heading">
+    $action.getText("assign-webwork.assign.templates.input.title")<span style="display:none" class="header-separator">:&nbsp;</span>
+    <a class="header-issue-key" style="display:none" title="$action.issueObject.summary" href="/jira/browse/$action.issueObject.key">$action.issueObject.key</a>
+</h2>
+#if (${hasErrorMessages})
+    #set ( $defaultInit = $action.doDefault() )
+#end
+<div class="aui-popup-content">
+    <div class="dialog-title hidden">Assign</div>
+    <div class="aui-dialog-content">
+        <form action="AssignIssue.jspa" class="aui" id="form-assign-issue-id" method="post">
+            <div class="form-body" style="max-height: 325px; ">
+                <div class="hidden">
+                    <input name="id" type="hidden" value="$action.id">
+</div>
+<fieldset>
+    <div class="field-group" id="assignee-container">
+        <label for="assignee">$action.getText("assign-webwork.assign.templates.input.label.assignee")</label>
+        <div class="aui-ss long-field" id="assign-single-user">
+            <input type="hidden" name="assignee" value="$action.assignableUsers.get(0).name" id="assignee" class="textfield" readonly="readonly">
+                <select id="users-list-id" onchange="javascript:onUserChange('users-list-id', 'assignee');" readonly="readonly">
+                    #foreach($valid-user in $action.assignableUsers)
+                        <option id="user-id-$valid-user.name" value="$valid-user.name">$valid-user.name</option>
+                    #end
+                </select>
+</div>
+#foreach ($error in $action.getErrorMessages())
+    <div class="error" data-field="users-list-id">$error</div>
+#end
+#set ( $assign-me-id = "user-id-$action.currentUser.name" )
+<a href="javascript:assignToUser('$assign-me-id', 'users-list-id', 'assignee');" id="assign-to-me">$action.getText("assign-webwork.assign.templates.input.link.atm")</a>
+        </div>
+        <div class="field-group aui-field-wikiedit comment-input">
+            <label for="comment">$action.getText("assign-webwork.assign.templates.input.label.comment")</label>
+            <div class="wiki-edit">
+                <div id="comment-wiki-edit" class="wiki-edit-content">
+                    <textarea class="textarea long-field wiki-textfield mentionable" cols="60" id="comment" name="comment" rows="10" wrap="virtual" data-projectkey="$action.project.key" data-issuekey="$action.issueObject.key"></textarea>
+                    <div class="content-inner">            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field-group">
+            <input type="hidden" name="assignanyway" value="false" id="assignanyway" class="textfield" readonly="readonly">
+                <label for="cb-assignanyway">$action.getText("assign-webwork.assign.templates.input.label.fassign")</label>
+                <input id="cb-assignanyway" type="checkbox" onchange="javascript:onCbSelected('cb-assignanyway', 'assignanyway');">
+                </div>
+</fieldset>
+        </div>
+        <div class="buttons-container form-footer">
+            <div class="buttons">
+                <span class="icon throbber"></span>
+                <input class="button" id="assign-issue-submit" name="Assign" type="submit" value="$action.getText("assign-webwork.assign.templates.input.button.assign")">
+                    <a class="cancel" href="/jira/browse/$action.issueObject.key" id="assign-issue-cancel">$action.getText("assign-webwork.assign.templates.input.button.cancel")</a>
+                </div>
+            </div>
+</form>
+    </div>
+</div>
